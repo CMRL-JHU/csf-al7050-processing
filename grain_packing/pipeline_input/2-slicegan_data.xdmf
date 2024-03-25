@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd"[]>
+<Xdmf xmlns:xi="http://www.w3.org/2003/XInclude" Version="2.2">
+ <Domain>
+  <!-- *************** START OF ImageDataContainer *************** -->
+  <Grid Name="ImageDataContainer" GridType="Uniform">
+    <Topology TopologyType="3DCoRectMesh" Dimensions="129 129 129 "></Topology>
+    <Geometry Type="ORIGIN_DXDYDZ">
+      <!-- Origin  Z, Y, X -->
+      <DataItem Format="XML" Dimensions="3">0 0 0</DataItem>
+      <!-- DxDyDz (Spacing/Resolution) Z, Y, X -->
+      <DataItem Format="XML" Dimensions="3">0.5 0.5 0.5</DataItem>
+    </Geometry>
+    <Attribute Name="Mask" AttributeType="Scalar" Center="Cell">
+      <DataItem Format="HDF" Dimensions="128 128 128 1" NumberType="uchar" Precision="1" >
+        2-slicegan_data.dream3d:/DataContainers/ImageDataContainer/CellData/Mask
+      </DataItem>
+    </Attribute>
+    <Attribute Name="Phases" AttributeType="Scalar" Center="Cell">
+      <DataItem Format="HDF" Dimensions="128 128 128 1" NumberType="Int" Precision="4" >
+        2-slicegan_data.dream3d:/DataContainers/ImageDataContainer/CellData/Phases
+      </DataItem>
+    </Attribute>
+  </Grid>
+  <!-- *************** END OF ImageDataContainer *************** -->
+ </Domain>
+</Xdmf>

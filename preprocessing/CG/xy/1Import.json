@@ -1,0 +1,30 @@
+{
+    "0": {
+        "CellAttributeMatrixName": "CellData",
+        "CellEnsembleAttributeMatrixName": "CellEnsembleData",
+        "DataContainerName": "ImageDataContainer",
+        "DegreesToRadians": 1,
+        "EdaxHexagonalAlignment": 1,
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Import Oxford Instr. EBSD Data (.ctf)",
+        "Filter_Name": "ReadCtfData",
+        "Filter_Uuid": "{d1df969c-0428-53c3-b61d-99ea2bb6da28}",
+        "InputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_input/al7050/AA7050 XY Specimen 1 Site 1 Map Data 1.ctf"
+    },
+    "1": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Write DREAM.3D Data File",
+        "Filter_Name": "DataContainerWriter",
+        "Filter_Uuid": "{3fcd4c43-9d75-5b86-aad4-4441bc914f37}",
+        "OutputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_output/1-ebsd_data.dream3d",
+        "WriteTimeSeries": 0,
+        "WriteXdmfFile": 1
+    },
+    "PipelineBuilder": {
+        "Name": "1Import",
+        "Number_Filters": 2,
+        "Version": 6
+    }
+}

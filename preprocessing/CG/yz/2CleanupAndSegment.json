@@ -1,0 +1,708 @@
+{
+    "00": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Read DREAM.3D Data File",
+        "Filter_Name": "DataContainerReader",
+        "Filter_Uuid": "{043cbde5-3878-5718-958f-ae75714df0df}",
+        "InputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/yz/pipeline_output/1-ebsd_data.dream3d",
+        "InputFileDataContainerArrayProxy": {
+            "Data Containers": [
+                {
+                    "Attribute Matricies": [
+                        {
+                            "Data Arrays": [
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "BC",
+                                    "Object Type": "DataArray<int32_t>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "BS",
+                                    "Object Type": "DataArray<int32_t>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "Bands",
+                                    "Object Type": "DataArray<int32_t>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "Error",
+                                    "Object Type": "DataArray<int32_t>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        3
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "EulerAngles",
+                                    "Object Type": "DataArray<float>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "MAD",
+                                    "Object Type": "DataArray<float>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "Phases",
+                                    "Object Type": "DataArray<int32_t>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "X",
+                                    "Object Type": "DataArray<float>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "Y",
+                                    "Object Type": "DataArray<float>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellData",
+                                    "Tuple Dimensions": [
+                                        300,
+                                        300,
+                                        1
+                                    ],
+                                    "Version": 2
+                                }
+                            ],
+                            "Flag": 2,
+                            "Name": "CellData",
+                            "Type": 3
+                        },
+                        {
+                            "Data Arrays": [
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "CrystalStructures",
+                                    "Object Type": "DataArray<uint32_t>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellEnsembleData",
+                                    "Tuple Dimensions": [
+                                        5
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        6
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "LatticeConstants",
+                                    "Object Type": "DataArray<float>",
+                                    "Path": "/DataContainers/ImageDataContainer/CellEnsembleData",
+                                    "Tuple Dimensions": [
+                                        5
+                                    ],
+                                    "Version": 2
+                                },
+                                {
+                                    "Component Dimensions": [
+                                        1
+                                    ],
+                                    "Flag": 2,
+                                    "Name": "MaterialName",
+                                    "Object Type": "StringDataArray",
+                                    "Path": "/DataContainers/ImageDataContainer/CellEnsembleData",
+                                    "Tuple Dimensions": [
+                                        5
+                                    ],
+                                    "Version": 2
+                                }
+                            ],
+                            "Flag": 2,
+                            "Name": "CellEnsembleData",
+                            "Type": 11
+                        }
+                    ],
+                    "Flag": 2,
+                    "Name": "ImageDataContainer",
+                    "Type": 0
+                }
+            ]
+        },
+        "OverwriteExistingDataContainers": 0
+    },
+    "01": {
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Convert Orientation Representation",
+        "Filter_Name": "ConvertOrientations",
+        "Filter_Uuid": "{e5629880-98c4-5656-82b8-c9fe2b9744de}",
+        "InputOrientationArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "EulerAngles",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "InputType": 0,
+        "OutputOrientationArrayName": "Quats",
+        "OutputType": 2
+    },
+    "02": {
+        "DestinationArrayName": "Error_Mask",
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Threshold Objects",
+        "Filter_Name": "MultiThresholdObjects",
+        "Filter_Uuid": "{014b7300-cf36-5ede-a751-5faf9b119dae}",
+        "SelectedThresholds": [
+            {
+                "Attribute Array Name": "Error",
+                "Attribute Matrix Name": "CellData",
+                "Comparison Operator": 2,
+                "Comparison Value": 0,
+                "Data Container Name": "ImageDataContainer"
+            }
+        ]
+    },
+    "03": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">output reference IPF(Z)</p></body></html>"
+    },
+    "04": {
+        "CellEulerAnglesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "EulerAngles",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CellIPFColorsArrayName": "IPFColor",
+        "CellPhasesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Phases",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CrystalStructuresArrayPath": {
+            "Attribute Matrix Name": "CellEnsembleData",
+            "Data Array Name": "CrystalStructures",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Generate IPF Colors",
+        "Filter_Name": "GenerateIPFColors",
+        "Filter_Uuid": "{a50e6532-8075-5de5-ab63-945feb0de7f7}",
+        "GoodVoxelsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Error_Mask",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "ReferenceDir": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+        },
+        "UseGoodVoxels": 1
+    },
+    "05": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Convert AttributeArray Data Type",
+        "Filter_Name": "ConvertData",
+        "Filter_Uuid": "{f4ba5fa4-bb5c-5dd1-9429-0dd86d0ecb37}",
+        "OutputArrayName": "IPFColorImage",
+        "ScalarType": 1,
+        "SelectedCellArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "IPFColor",
+            "Data Container Name": "ImageDataContainer"
+        }
+    },
+    "06": {
+        "FileName": "/home/nirahve/school/research/papers/nature/preprocessing/CG/yz/pipeline_output/images/1-IPFColor.png",
+        "FilterVersion": "1.0.496",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Writer",
+        "Filter_Name": "ITKImageWriter",
+        "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
+        "ImageArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "IPFColorImage",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Plane": 0
+    },
+    "07": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">segment grains based on crystallographic misorientation</p></body></html>"
+    },
+    "08": {
+        "ActiveArrayName": "Active",
+        "CellFeatureAttributeMatrixName": "CellFeatureData",
+        "CellPhasesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Phases",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CrystalStructuresArrayPath": {
+            "Attribute Matrix Name": "CellEnsembleData",
+            "Data Array Name": "CrystalStructures",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeatureIdsArrayName": "FeatureIds",
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Segment Features (Misorientation)",
+        "Filter_Name": "EBSDSegmentFeatures",
+        "Filter_Uuid": "{7861c691-b821-537b-bd25-dc195578e0ea}",
+        "GoodVoxelsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Error_Mask",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "MisorientationTolerance": 5,
+        "QuatsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Quats",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "UseGoodVoxels": 1
+    },
+    "09": {
+        "CellPhasesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Phases",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeatureIdsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIds",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeaturePhasesArrayPath": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "Phases",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Find Feature Phases",
+        "Filter_Name": "FindFeaturePhases",
+        "Filter_Uuid": "{6334ce16-cea5-5643-83b5-9573805873fa}"
+    },
+    "10": {
+        "AvgEulerAnglesArrayPath": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "AvgEulerAngles",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "AvgQuatsArrayPath": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "AvgQuats",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CellPhasesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Phases",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CrystalStructuresArrayPath": {
+            "Attribute Matrix Name": "CellEnsembleData",
+            "Data Array Name": "CrystalStructures",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeatureIdsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIds",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Find Feature Average Orientations",
+        "Filter_Name": "FindAvgOrientations",
+        "Filter_Uuid": "{bf7036d8-25bd-540e-b6de-3a5ab0e42c5f}",
+        "QuatsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Quats",
+            "Data Container Name": "ImageDataContainer"
+        }
+    },
+    "11": {
+        "CreatedArrayName": "FeatureAvgEulerAngles",
+        "FeatureIdsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIds",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Create Element Array from Feature Array",
+        "Filter_Name": "CopyFeatureArrayToElementArray",
+        "Filter_Uuid": "{99836b75-144b-5126-b261-b411133b5e8a}",
+        "SelectedFeatureArrayPath": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "AvgEulerAngles",
+            "Data Container Name": "ImageDataContainer"
+        }
+    },
+    "12": {
+        "CellEulerAnglesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureAvgEulerAngles",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CellIPFColorsArrayName": "FeatureIPFColor",
+        "CellPhasesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Phases",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CrystalStructuresArrayPath": {
+            "Attribute Matrix Name": "CellEnsembleData",
+            "Data Array Name": "CrystalStructures",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Generate IPF Colors",
+        "Filter_Name": "GenerateIPFColors",
+        "Filter_Uuid": "{a50e6532-8075-5de5-ab63-945feb0de7f7}",
+        "GoodVoxelsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Error_Mask",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "ReferenceDir": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+        },
+        "UseGoodVoxels": 1
+    },
+    "13": {
+        "EquivalentDiametersArrayName": "EquivalentDiameters",
+        "FeatureAttributeMatrixName": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeatureIdsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIds",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Find Feature Sizes",
+        "Filter_Name": "FindSizes",
+        "Filter_Uuid": "{656f144c-a120-5c3b-bee5-06deab438588}",
+        "NumElementsArrayName": "NumElements",
+        "SaveElementSizes": 0,
+        "VolumesArrayName": "Volumes"
+    },
+    "14": {
+        "BoundaryCellsArrayName": "BoundaryCells",
+        "CellFeatureAttributeMatrixPath": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeatureIdsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIds",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Find Feature Neighbors",
+        "Filter_Name": "FindNeighbors",
+        "Filter_Uuid": "{97cf66f8-7a9b-5ec2-83eb-f8c4c8a17bac}",
+        "NeighborListArrayName": "NeighborList",
+        "NumNeighborsArrayName": "NumNeighbors",
+        "SharedSurfaceAreaListArrayName": "SharedSurfaceAreaList",
+        "StoreBoundaryCells": 0,
+        "StoreSurfaceFeatures": 0,
+        "SurfaceFeaturesArrayName": "SurfaceFeatures"
+    },
+    "15": {
+        "AvgQuatsArrayPath": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "AvgQuats",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CellPhasesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Phases",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "CrystalStructuresArrayPath": {
+            "Attribute Matrix Name": "CellEnsembleData",
+            "Data Array Name": "CrystalStructures",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeatureAvgMisorientationsArrayName": "KernelAvgMisorientations",
+        "FeatureIdsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIds",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FeatureReferenceMisorientationsArrayName": "KernelAvgMisorientations",
+        "FilterVersion": "6.5.141",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Find Feature Reference Misorientations",
+        "Filter_Name": "FindFeatureReferenceMisorientations",
+        "Filter_Uuid": "{428e1f5b-e6d8-5e8b-ad68-56ff14ee0e8c}",
+        "GBEuclideanDistancesArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "GBEuclideanDistances",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "QuatsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Quats",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "ReferenceOrientation": 0
+    },
+    "16": {
+        "CreatedArrayName": "GrainAverageKernelAverageMisorientations",
+        "FeatureIdsArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIds",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Create Element Array from Feature Array",
+        "Filter_Name": "CopyFeatureArrayToElementArray",
+        "Filter_Uuid": "{99836b75-144b-5126-b261-b411133b5e8a}",
+        "SelectedFeatureArrayPath": {
+            "Attribute Matrix Name": "CellFeatureData",
+            "Data Array Name": "KernelAvgMisorientations",
+            "Data Container Name": "ImageDataContainer"
+        }
+    },
+    "17": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Write DREAM.3D Data File",
+        "Filter_Name": "DataContainerWriter",
+        "Filter_Uuid": "{3fcd4c43-9d75-5b86-aad4-4441bc914f37}",
+        "OutputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/yz/pipeline_output/2.2-segmented data preErodeDilate.dream3d",
+        "WriteTimeSeries": 0,
+        "WriteXdmfFile": 1
+    },
+    "18": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">output grain average IPF(Z) and GAKAM</p></body></html>"
+    },
+    "19": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Convert AttributeArray Data Type",
+        "Filter_Name": "ConvertData",
+        "Filter_Uuid": "{f4ba5fa4-bb5c-5dd1-9429-0dd86d0ecb37}",
+        "OutputArrayName": "FeatureIPFColorImage",
+        "ScalarType": 1,
+        "SelectedCellArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIPFColor",
+            "Data Container Name": "ImageDataContainer"
+        }
+    },
+    "20": {
+        "FileName": "/home/nirahve/school/research/papers/nature/preprocessing/CG/yz/pipeline_output/images/2-FeatureIPFColor.png",
+        "FilterVersion": "1.0.496",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Writer",
+        "Filter_Name": "ITKImageWriter",
+        "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
+        "ImageArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIPFColorImage",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Plane": 0
+    },
+    "21": {
+        "DefaultValue": 0,
+        "FilterVersion": "1.0.93",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Normalize Attribute Arrays",
+        "Filter_Name": "NormalizeArrays",
+        "Filter_Uuid": "{8c584519-15c3-5010-b5ed-a2ac626591a1}",
+        "MaskArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Error_Mask",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "NormalizeType": 1,
+        "Postfix": "_Normalized",
+        "RangeMax": 1,
+        "RangeMin": 0,
+        "SelectedDataArrayPaths": [
+            {
+                "Attribute Matrix Name": "CellData",
+                "Data Array Name": "GrainAverageKernelAverageMisorientations",
+                "Data Container Name": "ImageDataContainer"
+            }
+        ],
+        "UseMask": 1
+    },
+    "22": {
+        "CalculatedArray": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "GrainAverageKernelAverageMisorientationsImage",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Attribute Array Calculator",
+        "Filter_Name": "ArrayCalculator",
+        "Filter_Uuid": "{7ff0ebb3-7b0d-5ff7-b9d8-5147031aca10}",
+        "InfixEquation": "KernelAvgMisorientations*255",
+        "ScalarType": 1,
+        "SelectedAttributeMatrix": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Units": 1
+    },
+    "23": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Generate Color Table",
+        "Filter_Name": "GenerateColorTable",
+        "Filter_Uuid": "{0d0a6535-6565-51c5-a3fc-fbc00008606d}",
+        "RgbArrayName": "GrainAverageKernelAverageMisorientationsJet",
+        "SelectedDataArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "GrainAverageKernelAverageMisorientationsImage",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "SelectedPresetControlPoints": [
+            0,
+            0,
+            0,
+            0,
+            0.4,
+            0.901960784314,
+            0,
+            0,
+            0.8,
+            0.901960784314,
+            0.901960784314,
+            0,
+            1,
+            1,
+            1,
+            1
+        ],
+        "SelectedPresetName": "Black-Body Radiation"
+    },
+    "24": {
+        "FileName": "/home/nirahve/school/research/papers/nature/preprocessing/CG/yz/pipeline_output/images/2-gakam.png",
+        "FilterVersion": "1.0.496",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Writer",
+        "Filter_Name": "ITKImageWriter",
+        "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
+        "ImageArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "GrainAverageKernelAverageMisorientationsJet",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Plane": 0
+    },
+    "PipelineBuilder": {
+        "Name": "2Cleanup_Segment",
+        "Number_Filters": 25,
+        "Version": 6
+    }
+}

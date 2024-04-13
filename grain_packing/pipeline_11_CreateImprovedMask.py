@@ -1,3 +1,19 @@
+# Create a new bimodal mask using the bimodal mask from SliceGAN
+# and the fully packed cube of coarse grains from pipeline 10.
+# The volume fraction of each grain intersected by the bimodal mask
+# is then compared against the threshold:
+#   v_frac_i >= threshold: 
+#     The entire volume of the grain is added to the CG portion
+#     of the bimodal mask
+#   v_frac_i <  threshold:
+#     The entire volume of the grain is removed from the CG portion
+#     of the bimodal mask
+# This threshold can be used to raise or lower the volume ratio of
+# CGs vs UFGs.
+# To obtain a greater volume of CGs, choose a threshold < 0.5.
+# To obtain a lesser volume of CGs, choose a threshold > 0.5.
+
+
 import h5py
 import numpy as np
 import os

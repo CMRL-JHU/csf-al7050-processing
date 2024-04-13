@@ -1,3 +1,16 @@
+# If the mask from SliceGAN is especially large, it may be beneficial
+# to only sample a rectangular subdomain from somewhere in larger mask.
+# This script does exactly that. If run as is, it samples the entire subdomain,
+# however if run specifying an --x, --y, and/or --z, it samples only the
+# portions of the domain within the specified bounds.
+# EX:
+#    python pipeline_08_ChooseSubdomain.py --x 0 20 --y 0 20 --z 0 20
+#    samples only the portion of the original domain between voxels 0 and 20
+#    along every axis
+# It is highly recommended that a very small sample size such as the example
+# is used in test cases
+
+
 import h5py
 import argparse
 import utils_dream3d
@@ -7,6 +20,12 @@ path_output           = "pipeline_output/8-subdomain.dream3d"
 path_Geometry         = "/DataContainers/ImageDataContainer/_SIMPL_GEOMETRY"
 path_CellData         = "/DataContainers/ImageDataContainer/CellData"
 path_CellEnsembleData = "/DataContainers/ImageDataContainer/CellEnsembleData"
+
+# gui sample
+# x = [None , None ]
+# y = [None , None ]
+# z = [None , None ]
+# entire domain
 x = ['min', 'max']
 y = ['min', 'max']
 z = ['min', 'max']
@@ -104,7 +123,7 @@ with h5py.File(path_input , 'r') as file_input:
             path_output                                                           ,
             path_CellData                                                         ,
             name                                                                  ,
-            data = file_input[path_CellData+"/"+name][z[0]:z[1],y[0]:y[1],x[0]:x[1],...] ,
+            data = file_input[path_CellData+"/"+name][z[0]:z[1]+1,y[0]:y[1]+1,x[0]:x[1]+1,...] ,
             dtype = file_input[path_CellData+"/"+name].attrs["ObjectType"].decode('UTF-8'),
             attribute_matrix_type = "Cell"
         )

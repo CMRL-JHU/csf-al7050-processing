@@ -1,15 +1,13 @@
-# This script compares the morphological and crystallographic
-# characteristics of CGs in the EBSD data those of the SEVM
-
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-#output_path = "pipeline_output/20-compare_statistics.eps"
-output_path = "pipeline_output/20-compare_statistics.png"
+# paths
+output_path = "./pipeline_output/5-compare_statistics.png"
 
+#vars
 save         = True
 fontsize     = 20
 figsize      = [6.4, 4.8]
@@ -26,63 +24,23 @@ stat         = 'percent'
 
 data = {
     "statistics":{
-        "MisorientationList":{
-            "paths":{
-                "EBSD":{
-                    "file": "pipeline_output/3-feature_attributes_ebsd.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/MisorientationList"
-                },
-                "SEVM": {
-                    "file": "pipeline_output/19-synthetic_statistics.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/MisorientationList"
-                }
-            },
-            "xlabels":[r"Misorientation [$^{\circ}$]"],
-            "xlim"   :[0, 65],
-            "ylim"   :None,
-            "n_bins" :25
-        },
-        "EquivalentDiameters":{
-            "paths":{
-                "EBSD":{
-                    "file": "pipeline_output/3-feature_attributes_ebsd.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/EquivalentDiameters"
-                },
-                "SEVM": {
-                    "file": "pipeline_output/19-synthetic_statistics.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/EquivalentDiameters"
-                }
-            },
-            "xlabels":[r"Equivalent Diameters [$\mu m$]"],
-            "xlim"   :[0, None],
-            "ylim"   :None,
-            "n_bins" :25
-        },
-        "Volumes":{
-            "paths":{
-                "EBSD":{
-                    "file": "pipeline_output/3-feature_attributes_ebsd.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/Volumes"
-                },
-                "SEVM": {
-                    "file": "pipeline_output/19-synthetic_statistics.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/Volumes"
-                }
-            },
-            "xlabels" :[r"Volumes [${\mu m}^3$]"],
-            "xlim"   :[0, None],
-            "ylim"   :None,
-            "n_bins" :25
-        },
-        # "AspectRatios":{
+        # "MisorientationList":{
         #     "paths":{
-        #         "EBSD":{
-        #             "file": "pipeline_output/3-feature_attributes_ebsd.dream3d",
-        #             "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/AspectRatios"
-        #         },
-        #         "SEVM": {
-        #             "file": "pipeline_output/19-synthetic_statistics.dream3d",
-        #             "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/AspectRatios"
+        #         "UFG":{
+        #             "file": "./pipeline_output/4-Separated_domains.dream3d",
+        #             "hdf5": "/DataContainers/ImageDataContainer/CellFeatureData/MisorientationList"
+        #         }
+        #     },
+        #     "xlabels":[r"Misorientation [$^{\circ}$]"],
+        #     "xlim"   :[0, 65],
+        #     "ylim"   :None,
+        #     "n_bins" :25
+        # },
+        #" AspectRatios":{
+        #     "paths":{
+        #         "UFG":{
+        #             "file": "./pipeline_output/4-Separated_domains.dream3d",
+        #             "hdf5": "/DataContainers/ImageDataContainer/CellFeatureData/AspectRatios"
         #         }
         #     },
         #     "xlabels":["Aspect Ratios b/a", "Aspect Ratios c/a"],
@@ -90,21 +48,17 @@ data = {
         #     "ylim"   :None,
         #     "n_bins" :25
         # }
-        "AspectRatios":{
+        "EquivalentDiameters":{
             "paths":{
-                "EBSD":{
-                    "file": "pipeline_output/3-feature_attributes_ebsd.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/AspectRatios"
-                },
-                "SEVM": {
-                    "file": "pipeline_output/19-synthetic_statistics.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/AspectRatios"
+                "UFG":{
+                    "file": "./pipeline_output/4-Separated_domains.dream3d",
+                    "hdf5": "/DataContainers/ImageDataContainer/CellFeatureData//EquivalentDiameters"
                 }
             },
-            "xlabels":["Aspect Ratios"],
-            "xlim"   :[0.0, 1],
+            "xlabels":[r"Equivalent Diameters [$\mu m$]"],
+            "xlim"   :[0, 1],
             "ylim"   :None,
-            "n_bins" :25
+            "n_bins" :50
         }
     }
 }
@@ -234,9 +188,12 @@ def compare_statistics(inputs, save, fontsize, figsize, dpi, rotate_ticks, stat,
         for source in properties['paths']:
 
             # import the data
-            with h5py.File(properties['paths'][source]['file'], 'r') as f:
-                # [1:] removes error data
-                file_data = f[properties['paths'][source]['hdf5']][1:]
+            if properties['paths'][source]['file'].endswith('.dream3d'):
+                with h5py.File(properties['paths'][source]['file'], 'r') as f:
+                    # [1:] removes error data
+                    file_data = f[properties['paths'][source]['hdf5']][1:]
+            else:
+                file_data = np.loadtxt(properties['paths'][source]['file'])
             # reshape adds component dimensions if necessary
             file_data = file_data.reshape((file_data.shape[0],-1))
 
@@ -277,8 +234,7 @@ def compare_statistics(inputs, save, fontsize, figsize, dpi, rotate_ticks, stat,
             plt.savefig(f"{out_path_base}_{statistic}.{file_type}", dpi=dpi)
         else:
             plt.show()
-        plt.close(fig)
+        fig.clf()
 
 if __name__ == "__main__":
-
     compare_statistics(data, save, fontsize, figsize, dpi, rotate_ticks, stat, margin_shift_fraction, margin_axis_multiplier)

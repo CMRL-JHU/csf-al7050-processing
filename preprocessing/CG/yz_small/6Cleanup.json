@@ -1,11 +1,19 @@
 {
-    "0": {
+    "00": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This script uses a minimum size filter to remove grains that would not yeild correct morphological data, then uses a dilate/fill bad data/erode sequence to remove grain boundaries.</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Users may wish to change the parameters of the Minimum Size, and Dilate/Fill Bad Data/Erode filters to fit the needs of their microstructure. </p></body></html>"
+    },
+    "01": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Read DREAM.3D Data File",
         "Filter_Name": "DataContainerReader",
         "Filter_Uuid": "{043cbde5-3878-5718-958f-ae75714df0df}",
-        "InputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/yz_small/pipeline_output/4-Separated_domains.dream3d",
+        "InputFile": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/yz_small/pipeline_output/4-Separated_domains.dream3d",
         "InputFileDataContainerArrayProxy": {
             "Data Containers": [
                 {
@@ -522,7 +530,15 @@
         },
         "OverwriteExistingDataContainers": 0
     },
-    "1": {
+    "02": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt;\">remove very small grains (&lt; 3x3) such that we can be sure to obtain morphological data correctly,</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt;\">then erode/dilate as best dream-3d is able.</span></p></body></html>"
+    },
+    "03": {
         "ApplyToSinglePhase": 0,
         "FeatureIdsArrayPath": {
             "Attribute Matrix Name": "CellData",
@@ -549,7 +565,7 @@
         },
         "PhaseNumber": 0
     },
-    "2": {
+    "04": {
         "Direction": 1,
         "FeatureIdsArrayPath": {
             "Attribute Matrix Name": "CellData",
@@ -568,7 +584,7 @@
         "YDirOn": 1,
         "ZDirOn": 1
     },
-    "3": {
+    "05": {
         "CellPhasesArrayPath": {
             "Attribute Matrix Name": "CellData",
             "Data Array Name": "Phases",
@@ -589,7 +605,7 @@
         "MinAllowedDefectSize": 30,
         "StoreAsNewPhase": 0
     },
-    "4": {
+    "06": {
         "Direction": 0,
         "FeatureIdsArrayPath": {
             "Attribute Matrix Name": "CellData",
@@ -608,19 +624,133 @@
         "YDirOn": 1,
         "ZDirOn": 1
     },
-    "5": {
+    "07": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">output</p></body></html>"
+    },
+    "08": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Write DREAM.3D Data File",
         "Filter_Name": "DataContainerWriter",
         "Filter_Uuid": "{3fcd4c43-9d75-5b86-aad4-4441bc914f37}",
-        "OutputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/yz_small/pipeline_output/6-cleaned_grains.dream3d",
+        "OutputFile": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/yz_small/pipeline_output/6-cleaned_grains.dream3d",
         "WriteTimeSeries": 0,
         "WriteXdmfFile": 1
     },
+    "09": {
+        "CalculatedArray": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Mask_Clear_Image",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Attribute Array Calculator",
+        "Filter_Name": "ArrayCalculator",
+        "Filter_Uuid": "{7ff0ebb3-7b0d-5ff7-b9d8-5147031aca10}",
+        "InfixEquation": "Mask_Particle_Domain*255",
+        "ScalarType": 1,
+        "SelectedAttributeMatrix": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Units": 1
+    },
+    "10": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Generate Color Table",
+        "Filter_Name": "GenerateColorTable",
+        "Filter_Uuid": "{0d0a6535-6565-51c5-a3fc-fbc00008606d}",
+        "RgbArrayName": "Mask_Clear_Jet",
+        "SelectedDataArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Mask_Clear_Image",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "SelectedPresetControlPoints": [
+            -1,
+            0,
+            0,
+            0.5625,
+            -0.777778,
+            0,
+            0,
+            1,
+            -0.269841,
+            0,
+            1,
+            1,
+            -0.015873,
+            0.5,
+            1,
+            0.5,
+            0.238095,
+            1,
+            1,
+            0,
+            0.746032,
+            1,
+            0,
+            0,
+            1,
+            0.5,
+            0,
+            0
+        ],
+        "SelectedPresetName": "jet"
+    },
+    "11": {
+        "FileName": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/yz_small/pipeline_output/images/6-mask_Final.png",
+        "FilterVersion": "1.0.496",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Writer",
+        "Filter_Name": "ITKImageWriter",
+        "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
+        "ImageArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "Mask_Clear_Jet",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Plane": 0
+    },
+    "12": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Convert AttributeArray Data Type",
+        "Filter_Name": "ConvertData",
+        "Filter_Uuid": "{f4ba5fa4-bb5c-5dd1-9429-0dd86d0ecb37}",
+        "OutputArrayName": "FeatureIPFColorImage",
+        "ScalarType": 1,
+        "SelectedCellArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIPFColor",
+            "Data Container Name": "ImageDataContainer"
+        }
+    },
+    "13": {
+        "FileName": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/yz_small/pipeline_output/images/6-FeatureIPFColor.png",
+        "FilterVersion": "1.0.496",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Writer",
+        "Filter_Name": "ITKImageWriter",
+        "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
+        "ImageArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "FeatureIPFColorImage",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Plane": 0
+    },
     "PipelineBuilder": {
         "Name": "6Cleanup",
-        "Number_Filters": 6,
+        "Number_Filters": 14,
         "Version": 6
     }
 }

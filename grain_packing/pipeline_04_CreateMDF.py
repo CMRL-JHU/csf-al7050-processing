@@ -1,17 +1,17 @@
 # if you try to directly import the MDF points into dream3d,
 # it will superimpose them onto the existing mckenzie plot
 # that dream3d uses as the default MDF.
-# this script creates creates the MDF points by superimposing
+# this script creates the MDF points by superimposing
 # the desired MDF with the negative of the existing dream3d MDF
 # plot so that when dream3d superimposes the mckenzie plot, 
-# you're left with the true desired MDF.
+# it is cancelled out and you're left with the true desired MDF.
 
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
 
-path_input_file  = "./pipeline_output/5-feature_attributes_ebsd.dream3d"
-path_output_file = "./pipeline_output/6-mdf.txt"
+path_input_file  = "./pipeline_output/3-feature_attributes_ebsd.dream3d"
+path_output_file = "./pipeline_output/4-mdf.txt"
 path_input_data = "/DataContainers/ImageDataContainer/CellFeatureData/MisorientationList"
 # for some reason, this filter only acknowledges 13 points
 bins = 20

@@ -1,5 +1,13 @@
 {
     "0": {
+        "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This script is used only to import the EBSD data. However, because of its simplicity, it's also the only script that you MUST change if importing from a different file or different file type.</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If reading from a different file type like *.ang, you simply need to recreate the data that would have existed in a *.ctf such as converting the confidence data into a binary error mask.</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The only variable that are used later down the pipeline are:</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">* CellData/Error</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">* CellData/EulerAngles</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">* CellData/Phases</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">* CellEnsembleData/*</p></body></html>"
+    },
+    "1": {
         "CellAttributeMatrixName": "CellData",
         "CellEnsembleAttributeMatrixName": "CellEnsembleData",
         "DataContainerName": "ImageDataContainer",
@@ -10,21 +18,21 @@
         "Filter_Human_Label": "Import Oxford Instr. EBSD Data (.ctf)",
         "Filter_Name": "ReadCtfData",
         "Filter_Uuid": "{d1df969c-0428-53c3-b61d-99ea2bb6da28}",
-        "InputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_input/al7050/AA7050 XY Specimen 1 Site 1 Map Data 1.ctf"
+        "InputFile": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/xy/pipeline_input/al7050/AA7050 XY Specimen 1 Site 1 Map Data 1.ctf"
     },
-    "1": {
+    "2": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Write DREAM.3D Data File",
         "Filter_Name": "DataContainerWriter",
         "Filter_Uuid": "{3fcd4c43-9d75-5b86-aad4-4441bc914f37}",
-        "OutputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_output/1-ebsd_data.dream3d",
+        "OutputFile": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/xy/pipeline_output/1-ebsd_data.dream3d",
         "WriteTimeSeries": 0,
         "WriteXdmfFile": 1
     },
     "PipelineBuilder": {
         "Name": "1Import",
-        "Number_Filters": 2,
+        "Number_Filters": 3,
         "Version": 6
     }
 }

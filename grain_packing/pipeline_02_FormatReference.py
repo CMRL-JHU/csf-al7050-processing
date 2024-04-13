@@ -1,10 +1,17 @@
+# Delete any extraneous data from the reference data.
+# We don't know what was done to the reference data before this point,
+# but we do know what information should be contained in a
+# newly imported EBSD image, so we can remove all but those data arrays.
+# This way, whatever variables were created in the reference file
+# before this point will not be able to interfere with later scripts.
+
 import utils_dream3d
 import h5py
 import os
 from shutil import copyfile
 
 path_input            = "pipeline_input/6-yz_small_cleaned_grains.dream3d"
-path_output           = "pipeline_output/4-reference.dream3d"
+path_output           = "pipeline_output/2-reference.dream3d"
 path_CellData         = "/DataContainers/ImageDataContainer/CellData"
 path_CellFeatureData  = "/DataContainers/ImageDataContainer/CellFeatureData"
 

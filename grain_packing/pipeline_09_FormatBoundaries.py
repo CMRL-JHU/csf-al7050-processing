@@ -1,8 +1,16 @@
+# The purpose of this script is to:
+# 1) Remove "Phases" because grain packing will create another Phases data array
+#    which will conflict with the one we already have.
+# 2) Delete the bimodal mask file's cell ensemble data matrix because it may have
+#    outdated an incorrect phase data.
+# 3) Copy the cell ensemble data matrix from the grains file for correct
+#    phase data and grain statistics for packing and crystallography matching.
+
 import utils_dream3d
 import h5py
 from shutil import copyfile
 
-path_input_statistics        = "pipeline_output/7-xy-statistics-StatsGenerator.dream3d"
+path_input_statistics        = "pipeline_output/7-statistics-StatsGenerator.dream3d"
 path_input_boundaries        = "pipeline_output/8-subdomain.dream3d"
 path_output                  = "pipeline_output/9-xy-prepack.dream3d"
 path_CellData                = "/DataContainers/ImageDataContainer/CellData"

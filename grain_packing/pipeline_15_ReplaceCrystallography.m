@@ -1,3 +1,14 @@
+%{
+This script uses MTEX to create a crystallographic orientation distribution function (ODF)
+based off of the orientations found in the EBSD data, then randomly samples from that ODF
+to fill the euler angles of every grain such that crystallographic orientations are
+statistically equivalent.
+Users will want download MTEX (https://mtex-toolbox.github.io/download) and to change
+"path_mtex" to wherever it is unzipped in their system.
+Additionally, if using a different material from Aluminum, the user may need to change
+"crystal_symmetry".
+%}
+
 clear all;clc
 
 %%% start mtex
@@ -7,7 +18,7 @@ startup_mtex
 
 %%% paths
 % files
-path_file_input_eulerangles = "./pipeline_output/5-feature_attributes_ebsd.dream3d";
+path_file_input_eulerangles = "./pipeline_output/3-feature_attributes_ebsd.dream3d";
 path_file_input_dream3d     = "./pipeline_output/14-synthetic_grains.dream3d";
 path_file_output_dream3d    = "./pipeline_output/15-synthetic_grains.dream3d";
 % groups
@@ -19,7 +30,8 @@ path_synthetic_hdf5_eulerangles   = path_hdf5_cellfeaturedata+"/"+"AvgEulerAngle
 crystal_symmetry = crystalSymmetry('m-3m', [4.050 4.050 4.050], 'mineral', 'Aluminium', 'color', [0.53 0.81 0.98]);
 setMTEXpref('xAxisDirection','east');
 setMTEXpref('zAxisDirection','outOfPlane');
-psi = deLaValleePoussinKernel('halfwidth',10*degree);
+% psi = deLaValleePoussinKernel('halfwidth',10*degree);
+psi = SO3DeLaValleePoussinKernel('halfwidth',10*degree);
 
 % create new dream3d file
 copyfile(path_file_input_dream3d, path_file_output_dream3d, "f")
@@ -48,9 +60,9 @@ eulerangles_new = read_dream3d_dataset(path_file_output_dream3d, path_synthetic_
 % compare textures
 orientations_old = get_orientations(eulerangles_old, crystal_symmetry);
 orientations_new = get_orientations(eulerangles_new, crystal_symmetry);
-plot_pole_figures(orientations_old       , 'old', path_file_output_dream3d)
-plot_pole_figures(orientations_population, 'txt', path_file_output_dream3d)
-plot_pole_figures(orientations_new       , 'new', path_file_output_dream3d)
+plot_pole_figures(orientations_old       , 'dream3d', path_file_output_dream3d)
+plot_pole_figures(orientations_population, 'ebsd'   , path_file_output_dream3d)
+plot_pole_figures(orientations_new       , 'new'    , path_file_output_dream3d)
 
 function orientations = get_orientations(eulerangles, crystal_symmetry)
     orientations = orientation.byEuler(eulerangles(:,1), eulerangles(:,2), eulerangles(:,3), crystal_symmetry);

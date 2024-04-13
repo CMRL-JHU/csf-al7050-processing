@@ -1,3 +1,9 @@
+# sample windows of the 2d EBSD data for each orthoganal plane,
+# and sample slices of each orthogonal direction for the 3d SEVMS,
+# then use those samples create histograms of the UFG area fractions.
+# we can then use these samples to compare the area fractions of our
+# SEVMS with the area fractions of the EBSD data.
+
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize as plt_norm
 from matplotlib.cm import ScalarMappable as plt_sm

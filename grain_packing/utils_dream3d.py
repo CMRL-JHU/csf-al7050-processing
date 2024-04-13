@@ -134,6 +134,7 @@ def get_datatype_dream3d(datatype):
         return "DataArray<bool>"
     if datatype in ["object"]:
         return "StringDataArray"
+    
 # Find all filter ids in a DREAM.3D *.JSON file with name
 def get_filter_ids(data_json, name_filter):
 
@@ -147,6 +148,28 @@ def get_filter_ids(data_json, name_filter):
             filter_ids += [filter_id]
             
     return filter_ids
+
+def create_element_data_from_feature_data(featureids, data_feature_array):
+    
+    # find element geometry
+    dims       = list(featureids.shape[:-1])
+    components = data_feature_array.shape[-1]
+
+    # assign the correct euler angles to each voxel
+    data_cell_array = np.zeros((np.prod(dims+[components]),))
+    for i, featureid in enumerate(featureids.flatten()):
+        data_cell_array[i*components:(i+1)*components] = data_feature_array[featureid]
+    data_cell_array = data_cell_array.reshape(dims+[components]).astype(data_feature_array.dtype)
+
+    # VERY SLOW
+    # # find the voxels belonging to this grain
+    # # and assign the correct eulerangle into those voxels
+    # cell_eulerangles      = np.zeros(dims+[components])
+    # for featureid in range(feature_eulerangles.shape[0]):
+    #     mask = featureids == featureid
+    #     cell_eulerangles[mask.squeeze(), :] = feature_eulerangles[featureid]
+
+    return data_cell_array
 
 #slicegan has no knowlegde of crystallography data, resolution, or naming schema, so it is imported from the .dream3d file
 def import_resolution(ebsd_paths, name_planes, path_Geometry):
@@ -630,17 +653,11 @@ def replace_json_paths(json_path,input_path=None,output_path=None,image_path=Non
 ################## if there are issues with this function later, it may be because it also needs to scour CellEnsembleData and _SIMPL_GEOMETRY ################
 def update_attribute_arrays_expected(path_json):
     
-    # import json utils even if called from elsewhere
-    new_path = os.path.dirname(__file__)
-    if new_path not in sys.path:
-        sys.path.append(new_path)
-    import utils_json
-    
     # variables
     path_CellData = "/DataContainers/ImageDataContainer/CellData"
-    
-    # pull dream3d pipeline
-    data_json = utils_json.pull_input(path_json)
+
+    with open(path_json,"r") as f:
+        data_json = json.load(f)
     
     # find the data container reader ids
     filter_ids = get_filter_ids(data_json, "DataContainerReader")
@@ -671,19 +688,14 @@ def update_attribute_arrays_expected(path_json):
                     data_json[filter_id]["InputFileDataContainerArrayProxy"]["Data Containers"][i]["Attribute Matricies"][j]["Data Arrays"] = data_arrays
                     
                     # push inputs to dream3d pipeline
-                    utils_json.push_input(path_json, data_json, indent=4)
+                    with open(path_json,"w") as f:
+                        json.dump(data_json, f, indent=4, separators=(",", ": "), sort_keys=True)
                     
 def update_expected(path_json):
-        
-    # import json utils even if called from elsewhere
-    new_path = os.path.dirname(__file__)
-    if new_path not in sys.path:
-        sys.path.append(new_path)
-    import utils_json
     
     # pull dream3d pipeline
-    data_json = utils_json.pull_input(path_json)
-    
+    with open(path_json,"r") as f:
+            data_json = json.load(f)
     
     for filter_id in get_filter_ids(data_json, "DataContainerReader"):
     
@@ -694,7 +706,8 @@ def update_expected(path_json):
         data_json[filter_id]["InputFileDataContainerArrayProxy"] = expected["InputFileDataContainerArrayProxy"]
         
     # push inputs to dream3d pipeline
-    utils_json.push_input(path_json, data_json, indent=4)
+    with open(path_json,"w") as f:
+            json.dump(data_json, f, indent=4, separators=(",", ": "), sort_keys=True)
     
     
 def create_expected(items, depth=0):

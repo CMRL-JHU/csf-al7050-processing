@@ -1,11 +1,19 @@
 {
     "00": {
         "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This script is used to segment the microstructure into grains using a misorientation threshold and to obtain their morphological and crystallographic characteristics.</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The user may have to change the &quot;Misorientation Tolerance&quot; in the &quot;Segment Features (Misorientation)&quot; filter, but should not require additional changes.</p></body></html>"
+    },
+    "01": {
+        "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Read DREAM.3D Data File",
         "Filter_Name": "DataContainerReader",
         "Filter_Uuid": "{043cbde5-3878-5718-958f-ae75714df0df}",
-        "InputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_output/1-ebsd_data.dream3d",
+        "InputFile": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/xy/pipeline_output/1-ebsd_data.dream3d",
         "InputFileDataContainerArrayProxy": {
             "Data Containers": [
                 {
@@ -207,7 +215,7 @@
         },
         "OverwriteExistingDataContainers": 0
     },
-    "01": {
+    "02": {
         "FilterVersion": "6.5.141",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Convert Orientation Representation",
@@ -222,7 +230,7 @@
         "OutputOrientationArrayName": "Quats",
         "OutputType": 2
     },
-    "02": {
+    "03": {
         "DestinationArrayName": "Error_Mask",
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
@@ -239,7 +247,7 @@
             }
         ]
     },
-    "03": {
+    "04": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": false,
         "Filter_Human_Label": "Pipeline Annotation",
@@ -247,7 +255,7 @@
         "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
         "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">output reference IPF(Z)</p></body></html>"
     },
-    "04": {
+    "05": {
         "CellEulerAnglesArrayPath": {
             "Attribute Matrix Name": "CellData",
             "Data Array Name": "EulerAngles",
@@ -281,7 +289,7 @@
         },
         "UseGoodVoxels": 1
     },
-    "05": {
+    "06": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Convert AttributeArray Data Type",
@@ -295,8 +303,8 @@
             "Data Container Name": "ImageDataContainer"
         }
     },
-    "06": {
-        "FileName": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_output/images/1-IPFColor.png",
+    "07": {
+        "FileName": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/xy/pipeline_output/images/1-IPFColor.png",
         "FilterVersion": "1.0.496",
         "Filter_Enabled": true,
         "Filter_Human_Label": "ITK::Image Writer",
@@ -309,7 +317,7 @@
         },
         "Plane": 0
     },
-    "07": {
+    "08": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": false,
         "Filter_Human_Label": "Pipeline Annotation",
@@ -317,7 +325,7 @@
         "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
         "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">segment grains based on crystallographic misorientation</p></body></html>"
     },
-    "08": {
+    "09": {
         "ActiveArrayName": "Active",
         "CellFeatureAttributeMatrixName": "CellFeatureData",
         "CellPhasesArrayPath": {
@@ -349,7 +357,7 @@
         },
         "UseGoodVoxels": 1
     },
-    "09": {
+    "10": {
         "CellPhasesArrayPath": {
             "Attribute Matrix Name": "CellData",
             "Data Array Name": "Phases",
@@ -371,7 +379,7 @@
         "Filter_Name": "FindFeaturePhases",
         "Filter_Uuid": "{6334ce16-cea5-5643-83b5-9573805873fa}"
     },
-    "10": {
+    "11": {
         "AvgEulerAnglesArrayPath": {
             "Attribute Matrix Name": "CellFeatureData",
             "Data Array Name": "AvgEulerAngles",
@@ -408,7 +416,7 @@
             "Data Container Name": "ImageDataContainer"
         }
     },
-    "11": {
+    "12": {
         "CreatedArrayName": "FeatureAvgEulerAngles",
         "FeatureIdsArrayPath": {
             "Attribute Matrix Name": "CellData",
@@ -426,7 +434,7 @@
             "Data Container Name": "ImageDataContainer"
         }
     },
-    "12": {
+    "13": {
         "CellEulerAnglesArrayPath": {
             "Attribute Matrix Name": "CellData",
             "Data Array Name": "FeatureAvgEulerAngles",
@@ -460,7 +468,7 @@
         },
         "UseGoodVoxels": 1
     },
-    "13": {
+    "14": {
         "EquivalentDiametersArrayName": "EquivalentDiameters",
         "FeatureAttributeMatrixName": {
             "Attribute Matrix Name": "CellFeatureData",
@@ -481,7 +489,7 @@
         "SaveElementSizes": 0,
         "VolumesArrayName": "Volumes"
     },
-    "14": {
+    "15": {
         "BoundaryCellsArrayName": "BoundaryCells",
         "CellFeatureAttributeMatrixPath": {
             "Attribute Matrix Name": "CellFeatureData",
@@ -505,7 +513,7 @@
         "StoreSurfaceFeatures": 0,
         "SurfaceFeaturesArrayName": "SurfaceFeatures"
     },
-    "15": {
+    "16": {
         "AvgQuatsArrayPath": {
             "Attribute Matrix Name": "CellFeatureData",
             "Data Array Name": "AvgQuats",
@@ -545,7 +553,7 @@
         },
         "ReferenceOrientation": 0
     },
-    "16": {
+    "17": {
         "CreatedArrayName": "GrainAverageKernelAverageMisorientations",
         "FeatureIdsArrayPath": {
             "Attribute Matrix Name": "CellData",
@@ -563,17 +571,17 @@
             "Data Container Name": "ImageDataContainer"
         }
     },
-    "17": {
+    "18": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Write DREAM.3D Data File",
         "Filter_Name": "DataContainerWriter",
         "Filter_Uuid": "{3fcd4c43-9d75-5b86-aad4-4441bc914f37}",
-        "OutputFile": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_output/2.2-segmented data preErodeDilate.dream3d",
+        "OutputFile": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/xy/pipeline_output/2.2-segmented data preErodeDilate.dream3d",
         "WriteTimeSeries": 0,
         "WriteXdmfFile": 1
     },
-    "18": {
+    "19": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": false,
         "Filter_Human_Label": "Pipeline Annotation",
@@ -581,7 +589,7 @@
         "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
         "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">output grain average IPF(Z) and GAKAM</p></body></html>"
     },
-    "19": {
+    "20": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Convert AttributeArray Data Type",
@@ -595,8 +603,8 @@
             "Data Container Name": "ImageDataContainer"
         }
     },
-    "20": {
-        "FileName": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_output/images/2-FeatureIPFColor.png",
+    "21": {
+        "FileName": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/xy/pipeline_output/images/2-FeatureIPFColor.png",
         "FilterVersion": "1.0.496",
         "Filter_Enabled": true,
         "Filter_Human_Label": "ITK::Image Writer",
@@ -609,7 +617,7 @@
         },
         "Plane": 0
     },
-    "21": {
+    "22": {
         "DefaultValue": 0,
         "FilterVersion": "1.0.93",
         "Filter_Enabled": true,
@@ -634,7 +642,7 @@
         ],
         "UseMask": 1
     },
-    "22": {
+    "23": {
         "CalculatedArray": {
             "Attribute Matrix Name": "CellData",
             "Data Array Name": "GrainAverageKernelAverageMisorientationsImage",
@@ -654,7 +662,7 @@
         },
         "Units": 1
     },
-    "23": {
+    "24": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Generate Color Table",
@@ -686,8 +694,8 @@
         ],
         "SelectedPresetName": "Black-Body Radiation"
     },
-    "24": {
-        "FileName": "/home/nirahve/school/research/papers/nature/preprocessing/CG/xy/pipeline_output/images/2-gakam.png",
+    "25": {
+        "FileName": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/xy/pipeline_output/images/2-gakam.png",
         "FilterVersion": "1.0.496",
         "Filter_Enabled": true,
         "Filter_Human_Label": "ITK::Image Writer",
@@ -701,8 +709,8 @@
         "Plane": 0
     },
     "PipelineBuilder": {
-        "Name": "2Cleanup_Segment",
-        "Number_Filters": 25,
+        "Name": "2CleanupAndSegment",
+        "Number_Filters": 26,
         "Version": 6
     }
 }

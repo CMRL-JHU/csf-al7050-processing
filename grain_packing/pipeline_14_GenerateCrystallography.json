@@ -1,6 +1,14 @@
 {
     "0": {
         "FilterVersion": "1.2.815",
+        "Filter_Enabled": false,
+        "Filter_Human_Label": "Pipeline Annotation",
+        "Filter_Name": "PipelineAnnotation",
+        "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
+        "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This script should create statistically equivalent crystallography to the original EBSD map, although this has not proven successful in our case. Instead, the max iterations has been set to 1 such that dream3d creates the crystallographic variables, but does not assign meaningful values to them. This is then fixed in pipelines 15-17.</p></body></html>"
+    },
+    "1": {
+        "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Read DREAM.3D Data File",
         "Filter_Name": "DataContainerReader",
@@ -224,7 +232,7 @@
         },
         "OverwriteExistingDataContainers": 0
     },
-    "1": {
+    "2": {
         "BoundaryCellsArrayName": "BoundaryCells",
         "CellFeatureAttributeMatrixPath": {
             "Attribute Matrix Name": "CellFeatureData",
@@ -248,7 +256,7 @@
         "StoreSurfaceFeatures": 0,
         "SurfaceFeaturesArrayName": "SurfaceFeatures"
     },
-    "2": {
+    "3": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": false,
         "Filter_Human_Label": "Pipeline Annotation",
@@ -256,7 +264,7 @@
         "Filter_Uuid": "{8cc2198b-6a9d-5bf4-b8c0-b0878bb57f10}",
         "Summary": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt;\">Max iterations should be about (n_grains)^2</span></p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;\"><br /></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt;\">24927^2 = 621355329</span></p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;\"><br /></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt;\">max iterations set to 1 because dream3d doesn't work here</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt;\">fixed in pipeline 15-17</span></p></body></html>"
     },
-    "3": {
+    "4": {
         "AvgQuatsArrayName": "AvgQuats",
         "CellEulerAnglesArrayName": "AvgEulerAngles",
         "CrystalStructuresArrayPath": {
@@ -313,7 +321,7 @@
         },
         "VolumesArrayName": "Volumes"
     },
-    "4": {
+    "5": {
         "CellEulerAnglesArrayPath": {
             "Attribute Matrix Name": "CellData",
             "Data Array Name": "AvgEulerAngles",
@@ -347,7 +355,7 @@
         },
         "UseGoodVoxels": 1
     },
-    "5": {
+    "6": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Write DREAM.3D Data File",
@@ -359,7 +367,7 @@
     },
     "PipelineBuilder": {
         "Name": "pipeline_14_GenerateCrystallography",
-        "Number_Filters": 6,
+        "Number_Filters": 7,
         "Version": 6
     }
 }

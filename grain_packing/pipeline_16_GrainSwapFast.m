@@ -1,3 +1,17 @@
+%{
+This script uses MTEX to arrange the existing grain orientations such that the misorientation
+distribution function (MDF) are statistically equivalent to the MDF found in the EBSD data.
+Users will want download MTEX (https://mtex-toolbox.github.io/download) and to change
+"path_mtex" to wherever it is unzipped in their system.
+Additionally, if using a different material from Aluminum, the user may need to change
+"crystal_symmetry".
+If the algorithm has been running for quite a while without improvement, then the desired
+KS statistic cannot be reached for some reason. This can be caused by an insufficient number
+of grains or a bad ODF that does not allow for the desired MDF. It can also just be caused
+by an overly ambitious ks_target. just wait until after the next full save and exit the
+swapping algorithm to diagnose further.
+%}
+
 clear all;clc
 
 %%% start mtex
@@ -6,7 +20,7 @@ addpath(path_mtex)
 startup_mtex
 
 %%% vars
-ks_target        = 0.02;
+ks_target        = 0.04;
 iters_per_epoch  = 100;
 iters_per_backup = 2000;
 crystal_symmetry = crystalSymmetry('m-3m', [4.050 4.050 4.050], 'mineral', 'Aluminium', 'color', [0.53 0.81 0.98]);
@@ -15,7 +29,7 @@ save_histograms  = true;
 
 %%% paths
 % files
-path_ebsd_file_input           = "./pipeline_output/5-feature_attributes_ebsd.dream3d";
+path_ebsd_file_input           = "./pipeline_output/3-feature_attributes_ebsd.dream3d";
 path_synthetic_file_input      = "./pipeline_output/15-synthetic_grains.dream3d";
 path_temp_file_eulerangles     = "./pipeline_output/16-eulerangles.txt";
 path_temp_file_misorientations = "./pipeline_output/16-misorientations.txt";
@@ -267,9 +281,7 @@ end
 function [misorientations_target, YMisorientationReference] = initialize_RapidKS(misorientations_target_Unsorted)
 %%% format misorientations, initialize misorientation reference
 %%% for Max's RapidKS test
-% why are two extra values added to the misorientations here? -- josh
 misorientations_target_nonUnique = sort([0;misorientations_target_Unsorted;63]); % Max Pinz
-% why do we need unique floating point indecies between 0 and 1? --josh
 YMisorientationReference_nonUnique = 0:1/(numel(misorientations_target_nonUnique)-1):1; % Max Pinz
 % okay so we have a unique issue here that needs to be managed  % Max Pinz
 [misorientations_target,Ia,Ic] = unique(misorientations_target_nonUnique); % Max Pinz

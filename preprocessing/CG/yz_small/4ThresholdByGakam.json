@@ -589,6 +589,20 @@
         "WriteXdmfFile": 1
     },
     "08": {
+        "FileName": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/yz_small/pipeline_output/images/4-FeatureIPFColor.png",
+        "FilterVersion": "1.0.496",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Writer",
+        "Filter_Name": "ITKImageWriter",
+        "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
+        "ImageArrayPath": {
+            "Attribute Matrix Name": "CellData",
+            "Data Array Name": "IPFColorImage",
+            "Data Container Name": "ImageDataContainer"
+        },
+        "Plane": 0
+    },
+    "09": {
         "CalculatedArray": {
             "Attribute Matrix Name": "CellData",
             "Data Array Name": "Mask_Particle_Domain_Image",
@@ -608,7 +622,7 @@
         },
         "Units": 1
     },
-    "09": {
+    "10": {
         "FilterVersion": "1.2.815",
         "Filter_Enabled": true,
         "Filter_Human_Label": "Generate Color Table",
@@ -652,7 +666,7 @@
         ],
         "SelectedPresetName": "jet"
     },
-    "10": {
+    "11": {
         "FileName": "/home/nirahve/school/research/papers/nature/code/preprocessing/CG/yz_small/pipeline_output/images/4-mask_gakam_threshold.png",
         "FilterVersion": "1.0.496",
         "Filter_Enabled": true,
@@ -668,7 +682,7 @@
     },
     "PipelineBuilder": {
         "Name": "4ThresholdByGakam",
-        "Number_Filters": 11,
+        "Number_Filters": 12,
         "Version": 6
     }
 }

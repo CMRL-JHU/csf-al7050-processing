@@ -23,7 +23,7 @@ gauss_blur       =  10   # Gaussian blur level
 contrast_alpha   =   2   # Contrast multiplier           
 contrast_beta    = -20   # Contrast shift                
 binary_threshold = 200   # Binarization threshold (0-255)
-show_images      = False # Pop up images of each stage
+show_images      = True # Pop up images of each stage
 
 # import data from dream3d to image
 image = utils_dream3d_image.mask_to_image(

@@ -9,6 +9,8 @@
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
+import os
 
 path_input_file  = "./pipeline_output/3-feature_attributes_ebsd.dream3d"
 path_output_file = "./pipeline_output/4-mdf.txt"
@@ -18,14 +20,15 @@ bins = 20
 mckenzie_weight = 5000
 data_weight = 10000
 axis = [0,1,0]
-plot = True
+fontsize=20
+subplots_adjustment=dict(left=0.20, right=0.95, top=0.75, bottom=0.15, hspace=0.25)
 
 def import_data(path_input_file, path_input_data):
     
     with h5py.File(path_input_file,'r') as file:
         return file[path_input_data][...]
         
-def get_data_points(data, bins, plot=False):
+def get_data_points(data, bins):
     
     mckenzie_x_max = 62.4
     mckenzie_x_min =  2.4
@@ -34,7 +37,10 @@ def get_data_points(data, bins, plot=False):
 
     weights = np.ones_like(data)/len(data)
     HIST_BINS = np.linspace(xlim[0], xlim[1], bins)
+
+    fig, axis = plt.subplots(1,1)
     heights, edges, _ = plt.hist(x=data,bins=HIST_BINS,weights=weights,edgecolor="black",label="data")
+    plt.close(fig)
     
     centers = 0.5*(edges[1:] + edges[:-1])
     
@@ -93,27 +99,87 @@ def export_data(xs, ys, axis, path_output_file):
     with open(path_output_file, 'w') as f:
         f.write(string)
 
-data = import_data(path_input_file, path_input_data)
+def plot_image(
+    x_desired,
+        y_desired,
+        x_mckenzie,
+        y_mckenzie,
+        x_superimposed,
+        y_superimposed,
+        path_output_file,
+        subplots_adjustment=None
+):
 
-x_data, y_data = get_data_points(data, bins, plot=plot)
-y_data *= data_weight
-if plot:
-    plt.plot(x_data, y_data, marker="o", label="data")
-    plt.show(block=False)
+    fig, axis = plt.subplots(1,1)
 
-x_mckenzie, y_mckenzie = get_mckenzie_points(x_data)
-y_mckenzie *= mckenzie_weight
-if plot:
-    plt.plot(x_mckenzie, y_mckenzie, marker="o", label="mckenzie")
-    plt.show(block=False)
+    ### plot everything
+    # desired
+    plt.plot(x_desired, y_desired, marker="o", label="Desired")
+    # mckenzie
+    plt.plot(x_mckenzie, y_mckenzie, marker="o", label="McKenzie")
+    # superimposed
+    plt.plot(x_superimposed, y_superimposed, marker="o", label="Superimposed")
 
-x, y = [x_data, y_data-y_mckenzie]
-if plot:
-    plt.plot(x, y, marker="o", label="superimposed")
-    plt.show(block=False)
-    
-export_data(x, y, axis, path_output_file)
+    # print everything
+    axis.legend(                                        fontsize =fontsize)
+    axis.set_xlabel ("Misorientation Angle ($^\circ$)", fontsize =fontsize)
+    axis.set_ylabel ("Weighted PDF"                   , fontsize =fontsize)
+    axis.tick_params(axis='both', which='major'       , labelsize=fontsize)
 
-if plot:
-    plt.legend()
-    input("Press enter to continue...")
+    # move the legend
+    axis.get_legend().set_visible(False)
+    handles = axis.get_legend().legend_handles
+    labels  = [ text._text for text in axis.get_legend().texts]
+    fig.legend(handles, labels)
+    sns.move_legend(
+        obj            = fig           ,
+        loc            = "upper center",
+        bbox_to_anchor = (0.5, 1.0)    ,
+        ncol           = 2             ,
+        title          = None          ,
+        frameon        = False         ,
+        fontsize       = 20
+    )
+
+    # set axis scaling
+    if subplots_adjustment is None:
+        fig.tight_layout()
+    else:
+        fig.subplots_adjust(**subplots_adjustment)
+
+    # save
+    path, ext = path_output_file.rsplit('.',1)
+    path_output = f"{path}.png"
+    os.makedirs(os.path.split(path_output)[0], exist_ok=True)
+    fig.savefig(path_output)
+
+if __name__ == "__main__":
+
+    # import misorientation list from dream3d file
+    data = import_data(path_input_file, path_input_data)
+
+    # import the desired  MDF curve from the histogram of
+    # the imported misorientation data
+    x_desired, y_desired = get_data_points(data, bins)
+    y_desired *= data_weight
+
+    # create linear approximation of mckenzie curve
+    # with the same number of points as the desired curve
+    x_mckenzie, y_mckenzie = get_mckenzie_points(x_desired)
+    y_mckenzie *= mckenzie_weight
+
+    # create superimposed curve
+    x_superimposed, y_superimposed = [x_desired, y_desired-y_mckenzie]
+
+    # save superimposed curve to file
+    export_data(x_superimposed, y_superimposed, axis, path_output_file)
+    plot_image(
+        x_desired,
+        y_desired,
+        x_mckenzie,
+        y_mckenzie,
+        x_superimposed,
+        y_superimposed,
+        path_output_file,
+        subplots_adjustment
+    )

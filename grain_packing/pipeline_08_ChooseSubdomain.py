@@ -4,7 +4,7 @@
 # however if run specifying an --x, --y, and/or --z, it samples only the
 # portions of the domain within the specified bounds.
 # EX:
-#    python pipeline_08_ChooseSubdomain.py --x 0 20 --y 0 20 --z 0 20
+#    python pipeline_08_ChooseSubdomain.py --x 0 30 --y 0 30 --z 0 30
 #    samples only the portion of the original domain between voxels 0 and 20
 #    along every axis
 # It is highly recommended that a very small sample size such as the example
@@ -93,6 +93,11 @@ else:
     y = [int("".join(val)) for val in y]
     z = [int("".join(val)) for val in z]
 
+points = [
+    [x[0], y[0], z[0]],
+    [x[1], y[1], z[1]]
+]
+
 bounds = [x,y,z]
 dims   = [bound[1]-bound[0] for bound in bounds]
 
@@ -120,11 +125,11 @@ with h5py.File(path_input , 'r') as file_input:
     )
     for name in file_input[path_CellData].keys():
         utils_dream3d.insert_attribute_array(
-            path_output                                                           ,
-            path_CellData                                                         ,
-            name                                                                  ,
-            data = file_input[path_CellData+"/"+name][z[0]:z[1]+1,y[0]:y[1]+1,x[0]:x[1]+1,...] ,
-            dtype = file_input[path_CellData+"/"+name].attrs["ObjectType"].decode('UTF-8'),
+            path_output                                                                      ,
+            path_CellData                                                                    ,
+            name                                                                             ,
+            data = file_input[path_CellData+"/"+name][...][z[0]:z[1],y[0]:y[1],x[0]:x[1],...],
+            dtype = file_input[path_CellData+"/"+name].attrs["ObjectType"].decode('UTF-8')   ,
             attribute_matrix_type = "Cell"
         )
         

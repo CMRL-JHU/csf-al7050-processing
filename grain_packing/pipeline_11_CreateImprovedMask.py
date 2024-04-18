@@ -13,7 +13,7 @@
 # To obtain a greater volume of CGs, choose a threshold < 0.5.
 # To obtain a lesser volume of CGs, choose a threshold > 0.5.
 
-
+import argparse
 import h5py
 import numpy as np
 import os
@@ -30,6 +30,12 @@ path_mask = path_CellData+"/"+"Mask"
 # the volumetric fraction of the grain inside of the mask
 # if more that this fraction is inside, mask over the whole grain 
 threshold = 0.1
+
+# get user input
+parser = argparse.ArgumentParser()
+parser.add_argument("--t", dest="threshold", default=threshold, type=float, help="Specify mask/grain intersection threshold")
+args        = parser.parse_args()
+threshold  = args.threshold
 
 print(f"Creating new mask. Keeping grains where >= {threshold*100}% is inside mask.")
 with h5py.File(path_input,"r") as file_input:

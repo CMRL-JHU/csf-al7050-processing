@@ -48,7 +48,7 @@ path_config = {
         },
         "GAN"        :{
             "file": {
-                "path"      : "pipeline_input/2-slicegan_data.dream3d",
+                "path"      : "pipeline_output/8-subdomain.dream3d",
                 "datasets"  : {
                     "featureids": "/DataContainers/ImageDataContainer/CellData/Mask"
                 }

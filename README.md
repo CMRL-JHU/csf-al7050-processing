@@ -76,7 +76,7 @@ If the installation succeeded, it should now be possible to run the scripts usin
     The grain packing directory contains all the scripts necessary to create a SEVM for CSF microstructures. It takes in the bimodal CG/UFG domain mask from SliceGAN and packs it with grains having statistically equivalent morphological and crystallographic characteristics.
     As in Preprocessing, the scripts in each of these directories will need to be run in numerical order. Explanations and instructions are once again included in at the top of every script.  *.py and *.pyw must be executed with Python, *.json files must be executed with Dream3D, and *.m files must be executed with matlab. Scripts without a numerical identifier are support files and should not be run directly.
     Note that if you would like to run a small example script, it would be very beneficial to sample a small subdomain with pipeline component #8:
-    `python pipeline_08_ChooseSubdomain.py --x 0 20 --y 0 20 --z 0 20`
+    `python pipeline_08_ChooseSubdomain.py --x 0 30 --y 0 30 --z 0 30`
     Note also that due to the non-determinate nature of pipeline components #10, #16, and #17, no two SEVMs created by this pipeline will be exactly alike.
     The table below shows the intended inputs and the intended destination for the output.
     | Input                                 | Output                |

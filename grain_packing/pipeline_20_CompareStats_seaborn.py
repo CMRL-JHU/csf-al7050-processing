@@ -7,8 +7,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+output_path = "pipeline_output/20-compare_statistics.svg"
 #output_path = "pipeline_output/20-compare_statistics.eps"
-output_path = "pipeline_output/20-compare_statistics.png"
+# output_path = "pipeline_output/20-compare_statistics.png"
 
 save         = True
 fontsize     = 20
@@ -16,7 +17,7 @@ figsize      = [6.4, 4.8]
 dpi          = 200
 rotate_ticks = False
 margin_shift_fraction = {
-    'left'  : 0.20,
+    'left'  : 0.15,
     'right' : 0.05,
     'top'   : 0.15,
     'bottom': 0.15
@@ -58,22 +59,22 @@ data = {
             "ylim"   :None,
             "n_bins" :25
         },
-        "Volumes":{
-            "paths":{
-                "EBSD":{
-                    "file": "pipeline_output/3-feature_attributes_ebsd.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/Volumes"
-                },
-                "SEVM": {
-                    "file": "pipeline_output/19-synthetic_statistics.dream3d",
-                    "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/Volumes"
-                }
-            },
-            "xlabels" :[r"Volumes [${\mu m}^3$]"],
-            "xlim"   :[0, None],
-            "ylim"   :None,
-            "n_bins" :25
-        },
+        # "Volumes":{
+        #     "paths":{
+        #         "EBSD":{
+        #             "file": "pipeline_output/3-feature_attributes_ebsd.dream3d",
+        #             "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/Volumes"
+        #         },
+        #         "SEVM": {
+        #             "file": "pipeline_output/19-synthetic_statistics.dream3d",
+        #             "hdf5": "DataContainers/ImageDataContainer/CellFeatureData/Volumes"
+        #         }
+        #     },
+        #     "xlabels" :[r"Volumes [${\mu m}^3$]"],
+        #     "xlim"   :[0, None],
+        #     "ylim"   :None,
+        #     "n_bins" :25
+        # },
         # "AspectRatios":{
         #     "paths":{
         #         "EBSD":{

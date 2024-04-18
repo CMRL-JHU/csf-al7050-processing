@@ -16,6 +16,7 @@ import h5py
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import os
 
 path_file_input  = './pipeline_output/2.2-segmented data preErodeDilate.dream3d'
 path_file_output = './pipeline_output/3-gakam threshold.png'
@@ -156,6 +157,7 @@ def plot_before(gakam, xlabel, threshold, path_output, n_bins=50, fontsize=20, s
     # save
     path, ext = path_output.rsplit('.',1)
     path_output = f"{path}_before.{ext}"
+    os.makedirs(os.path.split(path_output)[0], exist_ok=True)
     fig.savefig(path_output)
 
     # close the figure

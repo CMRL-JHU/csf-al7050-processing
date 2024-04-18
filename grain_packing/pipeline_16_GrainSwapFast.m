@@ -18,6 +18,9 @@ clear all;clc
 path_mtex = "../../MTEX";
 addpath(path_mtex)
 startup_mtex
+ppi = get(0,'ScreenPixelsPerInch');
+fontSize = round(15 * ppi/100);
+setMTEXpref('FontSize',fontSize);
 
 %%% vars
 ks_target        = 0.04;
@@ -38,19 +41,13 @@ path_fig_output                = "./pipeline_output/images/16-misorientations.pn
 path_ebsd_hdf5_cellfeaturedata      = "/DataContainers/ImageDataContainer/CellFeatureData";
 path_synthetic_hdf5_cellfeaturedata = "/DataContainers/ImageDataContainer/CellFeatureData";
 % datasets
-% path_ebsd_hdf5_neighborlist       = path_ebsd_hdf5_cellfeaturedata     +"/"+"NeighborList";
-% path_ebsd_hdf5_eulerangles        = path_ebsd_hdf5_cellfeaturedata     +"/"+"AvgEulerAngles";
 path_ebsd_hdf5_misorientationlist = path_ebsd_hdf5_cellfeaturedata     +"/"+"MisorientationList";
 path_synthetic_hdf5_neighborlist  = path_synthetic_hdf5_cellfeaturedata+"/"+"NeighborList";
 path_synthetic_hdf5_eulerangles   = path_synthetic_hdf5_cellfeaturedata+"/"+"AvgEulerAngles";
 
 %%% find linked datasets
-% path_ebsd_hdf5_numneighbors      = ...
-%         rsplit(path_ebsd_hdf5_neighborlist     ,"/")+"/"+ ...
-%         h5readatt(path_ebsd_file_input     ,path_ebsd_hdf5_neighborlist     ,"Linked NumNeighbors Dataset" ...
-%     );
 path_synthetic_hdf5_numneighbors = ...
-        rsplit(path_synthetic_hdf5_neighborlist,"/")+"/"+ ...
+    rsplit(path_synthetic_hdf5_neighborlist,"/")+"/"+ ...
         h5readatt(path_synthetic_file_input,path_synthetic_hdf5_neighborlist,"Linked NumNeighbors Dataset" ...
     );
 
@@ -61,27 +58,10 @@ end
 
 %%% read from hdf5
 % grain/neighbor map from synthetic microstructure
-% neighborlist_ebsd               = transpose(read_dream3d_dataset(path_ebsd_file_input     , path_ebsd_hdf5_neighborlist      ));
-% numneighbors_ebsd               =           read_dream3d_dataset(path_ebsd_file_input     , path_ebsd_hdf5_numneighbors      );
 neighborlist_synthetic          = transpose(read_dream3d_dataset(path_synthetic_file_input, path_synthetic_hdf5_neighborlist ));
 numneighbors_synthetic          =           read_dream3d_dataset(path_synthetic_file_input, path_synthetic_hdf5_numneighbors );
 % target misorientation distribution from EBSD
 misorientations_target_unsorted = transpose(read_dream3d_dataset(path_ebsd_file_input     , path_ebsd_hdf5_misorientationlist));
-
-% %%% import target misorientation from EBSD
-% misorientations_target_unsorted = get_misorientations( ...
-%     transpose(2:size(numneighbors_ebsd,1)), ...
-%     get_orientations( ...
-%         read_dream3d_dataset( ...
-%             path_ebsd_file_input, ...
-%             path_ebsd_hdf5_eulerangles ...
-%         ), ...
-%         crystal_symmetry ...
-%     ), ...
-%     zeros(size(neighborlist_ebsd,1),1), ...
-%     neighborlist_ebsd, ...
-%     numneighbors_ebsd ...
-% );
 
 %%% import initial/current orientation, misorientation
 [orientations_previous, misorientations_previous] = initialize_orientations( ...
@@ -158,7 +138,7 @@ while abs(ks_previous) > ks_target
     end
 
     % save state periodically
-    if mod(iter, iters_per_backup) == 0 && iter ~= 0
+    if mod(iter, iters_per_backup) == 0 % && iter ~= 0
 		save_temp_files(orientations_previous, misorientations_previous, path_temp_file_eulerangles, path_temp_file_misorientations)
 		if save_histograms
             save_histogram(iter, misorientations_target_unsorted, misorientations_current, n_bins, path_fig_output)
@@ -172,7 +152,7 @@ end
 %%% final write
 save_temp_files(orientations_previous, misorientations_previous, path_temp_file_eulerangles, path_temp_file_misorientations)
 if save_histograms
-    save_histograms(iter, misorientations_target_unsorted, misorientations_current, n_bins, path_fig_output)
+    save_histogram(iter, misorientations_target_unsorted, misorientations_current, n_bins, path_fig_output)
 end
 
 %%% display total elapsed time
@@ -279,20 +259,20 @@ function eulerangles = get_eulers(orientations)
 end
 
 function [misorientations_target, YMisorientationReference] = initialize_RapidKS(misorientations_target_Unsorted)
-%%% format misorientations, initialize misorientation reference
-%%% for Max's RapidKS test
-misorientations_target_nonUnique = sort([0;misorientations_target_Unsorted;63]); % Max Pinz
-YMisorientationReference_nonUnique = 0:1/(numel(misorientations_target_nonUnique)-1):1; % Max Pinz
-% okay so we have a unique issue here that needs to be managed  % Max Pinz
-[misorientations_target,Ia,Ic] = unique(misorientations_target_nonUnique); % Max Pinz
-YMisorientationReference = YMisorientationReference_nonUnique(Ia); % Max Pinz
+    %%% format misorientations, initialize misorientation reference
+    %%% for Max's RapidKS test
+    misorientations_target_nonUnique = sort([0;misorientations_target_Unsorted;63]); % Max Pinz
+    YMisorientationReference_nonUnique = 0:1/(numel(misorientations_target_nonUnique)-1):1; % Max Pinz
+    % okay so we have a unique issue here that needs to be managed  % Max Pinz
+    [misorientations_target,Ia,Ic] = unique(misorientations_target_nonUnique); % Max Pinz
+    YMisorientationReference = YMisorientationReference_nonUnique(Ia); % Max Pinz
 end
 
 function KS_Val = RapidKS(Xq,misorientations_target,YMisorientationReference)
-XqSorted = sort(Xq);
-Y_CDF = 0:1/(numel(XqSorted)-1):1;
-YQ = interp1(misorientations_target,YMisorientationReference,XqSorted);
-KS_Val = max(abs(YQ - Y_CDF));
+    XqSorted = sort(Xq);
+    Y_CDF = 0:1/(numel(XqSorted)-1):1;
+    YQ = interp1(misorientations_target,YMisorientationReference,XqSorted);
+    KS_Val = max(abs(YQ - Y_CDF));
 end
 
 function [orientations, indecies] = swap(orientations)
@@ -320,7 +300,12 @@ function save_histogram_misorientations(path_output, misorientations_target, mis
     legend({"EBSD","Current Swap Iteration"})
     hold off
     
-    saveas(fig, path_output)
+    [~, extension] = rsplit(path_output, '.');
+    if any(contains({'pdf', 'eps'}, extension))
+        exportgraphics(fig, path_output, 'ContentType', 'vector');
+    elseif any(contains({'jpg', 'jpeg', 'png', 'tif'}, extension))
+        saveas(fig, strcat(path,'_pole_figure_',label,'.png'));
+    end
 
 end
 

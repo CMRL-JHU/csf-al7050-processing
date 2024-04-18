@@ -12,12 +12,9 @@ Additionally, if using a different material from Aluminum, the user may need to 
 clear all;clc
 
 %%% start mtex
-path_mtex = "../../MTEX";
-addpath(path_mtex)
-startup_mtex
-ppi = get(0,'ScreenPixelsPerInch');
-fontSize = round(60 * ppi/100);
-setMTEXpref('FontSize',fontSize);
+% path_mtex = "../../MTEX";
+% addpath(path_mtex)
+% startup_mtex
 
 display_only = true;
 
@@ -26,7 +23,7 @@ display_only = true;
 path_file_input_eulerangles = "./pipeline_output/3-feature_attributes_ebsd.dream3d";
 path_file_input_dream3d     = "./pipeline_output/14-synthetic_grains.dream3d";
 path_file_output_dream3d    = "./pipeline_output/15-synthetic_grains.dream3d";
-path_file_output_figures    = "./pipeline_output/15-synthetic_grains.pdf";
+path_file_output_dream3d
 % groups
 path_hdf5_cellfeaturedata = "/DataContainers/ImageDataContainer/CellFeatureData";
 % datasets
@@ -68,9 +65,11 @@ eulerangles_new = read_dream3d_dataset(path_file_output_dream3d, path_synthetic_
 % compare textures
 orientations_old = get_orientations(eulerangles_old, crystal_symmetry);
 orientations_new = get_orientations(eulerangles_new, crystal_symmetry);
-plot_pole_figures(orientations_old       , 'dream3d', path_file_output_figures)
-plot_pole_figures(orientations_population, 'ebsd'   , path_file_output_figures)
-plot_pole_figures(orientations_new       , 'new'    , path_file_output_figures)
+path = rsplit(path_output, '.');
+path_output = strcat(path,'_pole_figure_',label,extension);
+plot_pole_figures(orientations_old       , 'dream3d', path_file_output_dream3d)
+plot_pole_figures(orientations_population, 'ebsd'   , path_file_output_dream3d)
+plot_pole_figures(orientations_new       , 'new'    , path_file_output_dream3d)
 
 function orientations = get_orientations(eulerangles, crystal_symmetry)
     orientations = orientation.byEuler(eulerangles(:,1), eulerangles(:,2), eulerangles(:,3), crystal_symmetry);
@@ -102,7 +101,7 @@ function plot_pole_figures(orientations, label, path_output)
     mtexColorbar
 	
  	[path, extension] = rsplit(path_output, '.');
-    path_output = strcat(path,'_pole_figure_',label,'.',extension);
+    path_output = strcat(path,'_pole_figure_',label,extension);
     if any(contains({'pdf', 'eps'}, extension))
         exportgraphics(pole_figure, path_output, 'ContentType', 'vector');
     elseif any(contains({'jpg', 'jpeg', 'png', 'tif'}, extension))

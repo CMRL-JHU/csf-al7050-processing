@@ -19,7 +19,7 @@ ppi = get(0,'ScreenPixelsPerInch');
 fontSize = round(60 * ppi/100);
 setMTEXpref('FontSize',fontSize);
 
-display_only = true;
+display_only = false;
 
 %%% paths
 % files

@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+import os
 
 output_path = "pipeline_output/20-compare_statistics.svg"
 #output_path = "pipeline_output/20-compare_statistics.eps"
@@ -274,6 +275,7 @@ def compare_statistics(inputs, save, fontsize, figsize, dpi, rotate_ticks, stat,
         )
 
         if save:
+            os.makedirs(os.path.split(output_path)[0], exist_ok=True)
             out_path_base, file_type = output_path.rsplit('.',1)
             plt.savefig(f"{out_path_base}_{statistic}.{file_type}", dpi=dpi)
         else:

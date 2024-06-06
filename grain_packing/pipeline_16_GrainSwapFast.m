@@ -304,7 +304,7 @@ function save_histogram_misorientations(path_output, misorientations_target, mis
     if any(contains({'pdf', 'eps'}, extension))
         exportgraphics(fig, path_output, 'ContentType', 'vector');
     elseif any(contains({'jpg', 'jpeg', 'png', 'tif'}, extension))
-        saveas(fig, strcat(path,'_pole_figure_',label,'.png'));
+        saveas(fig, path_output);
     end
 
 end
@@ -319,6 +319,6 @@ end
 function save_histogram(iter, misorientations_target_unsorted, misorientations_current, n_bins, path_fig_output)
 	disp("   "+"Saving misorientation histograms...")
 	[head, tail] = rsplit(path_fig_output, '.');
-	path_fig_output_modified = head+"_"+string(iter)+'.'+tail;
+	path_fig_output_modified = strcat(head,"_",string(iter),'.',tail);
 	save_histogram_misorientations(path_fig_output_modified, misorientations_target_unsorted, misorientations_current, n_bins)
 end

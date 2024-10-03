@@ -14,18 +14,19 @@
 
 import h5py
 import matplotlib.pyplot as plt
+import matplotlib.patheffects as PathEffects
 import seaborn as sns
 import numpy as np
 import os
 
 path_file_input  = './pipeline_output/2.2-segmented data preErodeDilate.dream3d'
-path_file_output = './pipeline_output/3-gakam threshold.png'
+path_file_output = './pipeline_output/3-gakam threshold.svg'
 path_gakam = '/DataContainers/ImageDataContainer/CellFeatureData/KernelAvgMisorientations'
 n_bins = 100
 threshold = None
-xlabel = "GAKAM$^{\circ}$"
-fontsize = 20
-subplots_adjustment=dict(left=0.15, right=0.75, top=0.80, bottom=0.15, hspace=0.25)
+xlabel = "GAKAM$ (^{\circ}$)"
+fontsize = 25
+subplots_adjustment=dict(left=0.13, right=0.70, top=0.70, bottom=0.18, hspace=0.25)
 
 # create a discrete pdf from the histogram of some data
 def hist_to_points(data, n_bins=50):
@@ -35,10 +36,12 @@ def hist_to_points(data, n_bins=50):
 
     # plot the gakam histogram
     sns.histplot(
-        data  = data,
-        stat  = 'percent',
-        bins  = n_bins,
-        ax    = axis,
+        data      = data,
+        stat      = 'percent',
+        bins      = n_bins,
+        shrink    = 0.8,
+        edgecolor = 'k',
+        ax        = axis,
     )
     
     # gather the x and y locations from the histogram bins
@@ -97,11 +100,14 @@ def plot_before(gakam, xlabel, threshold, path_output, n_bins=50, fontsize=20, s
 
     # plot the gakam histogram
     sns.histplot(
-        data  = gakam ,
-        stat  = 'percent',
-        bins  = n_bins,
-        ax    = axis1,
-        label = 'PDF (%)'
+        data      = gakam ,
+        stat      = 'percent',
+        bins      = n_bins,
+        shrink    = 0.8,
+        edgecolor = 'k',
+        ax        = axis1,
+        alpha     = 1,
+        label     = 'PDF (%)'
     )
 
     # set the ylimit to a little higher than the next highest bin after the threshold
@@ -115,11 +121,19 @@ def plot_before(gakam, xlabel, threshold, path_output, n_bins=50, fontsize=20, s
     axis1.set_ylim  (y_limit)
 
     # plot the threshold as a vertical line
-    axis1.axvline(x=threshold, color = 'r', label=f"T={np.around(threshold, 4)}",)
+    line_threshold = axis1.axvline(x=threshold, color = 'lime', linewidth=2, linestyle=':', label=f"T={np.around(threshold, 4)}",)
+    line_threshold.set_path_effects([
+        PathEffects.Stroke(linewidth=3, foreground="black"),
+        PathEffects.Normal()
+    ])
 
     # plot the derivative field
     points_diff = find_derivative(hist_to_points(gakam, n_bins))
-    axis2.plot(points_diff[:,0], points_diff[:,1], label="$\dfrac{\partial Y}{\partial X}$", color='orange', linestyle='--')
+    line_diff = axis2.plot(points_diff[:,0], points_diff[:,1], color='orange', linewidth=2, linestyle='--', label="$\dfrac{\partial Y}{\partial X}$")
+    line_diff[0].set_path_effects([
+        PathEffects.Stroke(linewidth=3, foreground="black"),
+        PathEffects.Normal()
+    ])
 
     # continue the line colors from axis 1
     axis2._get_lines = axis1._get_lines
@@ -142,10 +156,10 @@ def plot_before(gakam, xlabel, threshold, path_output, n_bins=50, fontsize=20, s
         obj            = fig                     ,
         loc            = "upper center"          ,
         bbox_to_anchor = (0.5, 1.0)              ,
-        ncol           = 3                       ,
+        ncol           = 2                       ,
         title          = None                    ,
         frameon        = False                   ,
-        fontsize       = 20
+        fontsize       = fontsize
     )
 
     # set axis scaling
